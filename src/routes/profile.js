@@ -1,5 +1,5 @@
 const express = require('express');
-const userAuth = require('../Middlewares/auth');
+const userAuth = require('../Middlewares/userAuth');
 const { validateEditProfileData } = require('../../utils/validations');
 const profileRouter = express.Router();
 
@@ -17,7 +17,7 @@ profileRouter.patch("/profile/edit", userAuth, async(req, res) => {
         const loggedInUser = req.user;
 
         if(!validateEditProfileData(req)){
-            throw new Error("user update is failed  ")
+            throw new Error("user update is failed");
         }
 
          Object.keys(req.body).forEach(key => {loggedInUser[key] = req.body[key]});
@@ -25,6 +25,14 @@ profileRouter.patch("/profile/edit", userAuth, async(req, res) => {
         res.send(loggedInUser);
     }catch(err){
         res.status(400).send("Error: " + err.message);
+    }
+})
+
+profileRouter.post("/profile/password/forgot", async(req, res) => {
+    try{
+        
+    }catch(err){
+
     }
 })
 
