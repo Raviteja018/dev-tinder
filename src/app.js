@@ -6,6 +6,12 @@ const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/requests");
 const userRouter = require("./routes/user");
+const cors = require("cors");
+
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true,
+}));
 
 //to read json data we use this middleware - it converts json to js object
 // it is available from express v.4.16.0
@@ -19,8 +25,8 @@ app.use("/", userRouter);
 
 connectDB().then(() => {
     console.log("Database connection is established");
-    app.listen(4000, () => {
-        console.log("server is running on port 4000");
+    app.listen(5000, () => {
+        console.log("server is running on port 5000");
       })
 })
 .catch((err) => {
