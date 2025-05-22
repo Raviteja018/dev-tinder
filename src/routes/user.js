@@ -14,7 +14,7 @@ userRouter.get("/user/requests/received", userAuth, async(req, res) => {
         const connectionRequest = await ConnectionRequestModel.find({
             toUserId : loggedInUser._id,
             status : "interested",
-        }).populate("fromUserId", ["firstName"])
+        }).populate("fromUserId", ["firstName", "lastName", "about", "photoUrl"]);
 
         res.json({message: "data fetched successfully ", data : connectionRequest})
     }catch(err){
@@ -38,7 +38,7 @@ userRouter.get("/user/connections", userAuth, async(req, res) => {
             return field.fromUserId._id.toString() === loggedInUser._id.toString() ? field.toUserId : field.fromUserId;
         });
 
-        res.json({user_connection_message: data})
+        res.json({connections_data: data})
 
     }catch(err){
         res.status(400).send("Error : "+err.message);
