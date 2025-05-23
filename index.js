@@ -1,1 +1,3 @@
-console.log("something is running");
+const main = require('../server/src/app')
+
+main();
