@@ -15,7 +15,7 @@ const app = express();
 
 // Enable CORS for your frontend domain
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://devtinderravi.netlify.app/",
   credentials: true,
 }));
 
