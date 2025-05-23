@@ -1,3 +1,3 @@
-const main = require('../server/src/app')
+const main = require('../src/app')
 
 main();
